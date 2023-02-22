@@ -1,0 +1,48 @@
+name: napari-neuroml
+display_name: NeuroML visualisation
+contributions:
+  commands:
+    - id: napari-neuroml.get_reader
+      python_name: napari_neuroml._reader:napari_get_reader
+      title: Open data with NeuroML visualisation
+    - id: napari-neuroml.write_multiple
+      python_name: napari_neuroml._writer:write_multiple
+      title: Save multi-layer data with NeuroML visualisation
+    - id: napari-neuroml.write_single_image
+      python_name: napari_neuroml._writer:write_single_image
+      title: Save image data with NeuroML visualisation
+    - id: napari-neuroml.make_sample_data
+      python_name: napari_neuroml._sample_data:make_sample_data
+      title: Load sample data from NeuroML visualisation
+    - id: napari-neuroml.make_qwidget
+      python_name: napari_neuroml._widget:ExampleQWidget
+      title: Make example QWidget
+    - id: napari-neuroml.make_magic_widget
+      python_name: napari_neuroml._widget:example_magic_widget
+      title: Make example magic widget
+    - id: napari-neuroml.make_func_widget
+      python_name: napari_neuroml._widget:example_function_widget
+      title: Make example function widget
+  readers:
+    - command: napari-neuroml.get_reader
+      accepts_directories: false
+      filename_patterns: ['*.npy']
+  writers:
+    - command: napari-neuroml.write_multiple
+      layer_types: ['image*','labels*']
+      filename_extensions: []
+    - command: napari-neuroml.write_single_image
+      layer_types: ['image']
+      filename_extensions: ['.npy']
+  sample_data:
+    - command: napari-neuroml.make_sample_data
+      display_name: NeuroML visualisation
+      key: unique_id.1
+  widgets:
+    - command: napari-neuroml.make_qwidget
+      display_name: Example QWidget
+    - command: napari-neuroml.make_magic_widget
+      display_name: Example Magic Widget
+    - command: napari-neuroml.make_func_widget
+      autogenerate: true
+      display_name: Example Function Widget
